@@ -1,63 +1,65 @@
-import os
-import io
+# import os
+from os import listdir, remove
+from os.path import basename, isfile, join as pjoin
 import sys
-import subprocess
-from jsmin import jsmin
-
+from subprocess import call
+from packing.jsmin import jsmin
 
 def pack(path, minify):
+	'''Packs the file contents using jsmin to minify the JS/CSS'''
 	with open(path) as js_file:
-		filename = os.path.basename(path)
+		filename = basename(path)
 		script = js_file.read()
 		if minify:
 			script = jsmin(script)
+		# Append extraction delimeters
 		return "\n:START_{0}\n{1}\n:END_{0}\n".format(filename, script)
 
-
-debug = len(sys.argv) > 1 and sys.argv[1] == '-d'
+debug = '-d' in sys.argv
+keepFiles = '-k' in sys.argv
 if len(sys.argv) > 1 and sys.argv[1] == '--help':
 	print('pack.py [-d]\n\t-d  Debug Mode, does not minify the contents')
+
 print('Packing contents...', end='', flush=True)
-
-pack('src/anim-bg.js', not debug)
-
 packedData = ''
-files = [os.path.join('src', f) for f in os.listdir(
-	'src') if os.path.isfile(os.path.join('src', f))]
-files += [os.path.join('css', f) for f in os.listdir('css')
-		  if os.path.isfile(os.path.join('css', f))]
+# Collect all JavaScript files
+files = [pjoin('src', f) for f in listdir('src') if isfile(pjoin('src', f))]
+# Collect all CSS files
+files += [pjoin('css', f) for f in listdir('css') if isfile(pjoin('css', f))]
 contents = ''
+# Pack and concatenate the file contents
 for file in files:
 	contents += pack(file, not debug)
+
 print('done.\nGenerating scripts...', end='', flush=True)
 
+# Generate processor for each file to be extracted from the Patch Scripts
 processors = []
-for css in os.listdir('css'):
+for css in listdir('css'):
 	processors.append('processCSS "{0}"'.format(css))
-for src in os.listdir('src'):
+for src in listdir('src'):
 	processors.append('processJS "{0}"'.format(src))
 
-with open('patch_template.tsh', 'r') as patch, open('DFEnhancementSuitePatch.sh', 'w') as out:
+# Generate Linux Bash script
+with open('packing/patch_template.tsh', 'r') as patch, open('DFEnhancementSuitePatch.sh', 'w') as out:
 	out.write(patch.read()
 		.replace('{{{PROCESSORS}}}', '\n'.join(processors))
 		.replace('{{{CONTENTS}}}', contents))
-with open('patch_template.tps', 'r') as patch, open('DFEnhancementSuitePatch.ps1', 'w') as out:
-	out.write(patch.read()
-		.replace('{{{PROCESSORS}}}', '\n'.join(processors)))
 
+# Generate the PowerShell script
+with open('packing/patch_template.tps', 'r') as patch, open('DFEnhancementSuitePatch.ps1', 'w') as out:
+	out.write(patch.read().replace('{{{PROCESSORS}}}', '\n'.join(processors)))
+# Generate script to convert PS Script to Windows Executable
 with open('ps_pack.bat', 'w') as script:
-	script.write('''
-start /wait "" powershell -ExecutionPolicy Bypass -File "%~dp0ps2exe\\ps2exe.ps1" -inputFile DFEnhancementSuitePatch.ps1 -STA -iconFile icons\\fvtt_cc_anvil.ico -version "3.0" -title "DragonFlagon Enhancement Suite Patch for Foundry VTT" -requireAdmin
-''')
-subprocess.call(['/mnt/c/Windows/System32/cmd.exe', '/c', 'ps_pack.bat'])
-with open('ps_pack.sh', 'w') as script:
-	script.write('''
-cat __contents.tmp >> DFEnhancementSuitePatch.exe
-''')
+	script.write('''start /wait "" powershell -ExecutionPolicy Bypass -File "%~dp0packing\\ps2exe\\ps2exe.ps1" -inputFile DFEnhancementSuitePatch.ps1 -outputFile DFEnhancementSuitePatch.exe -STA -iconFile packing\\icons\\fvtt_cc_anvil.ico -version "3.0" -title "DragonFlagon Enhancement Suite Patch for Foundry VTT" -requireAdmin\n''')
+# Execute conversion script
+call(['/mnt/c/Windows/System32/cmd.exe', '/c', 'ps_pack.bat'])
+# Append JS/CSS content to the end of the windows executable file
 with open('DFEnhancementSuitePatch.exe', 'a') as fout:
 	fout.write(contents)
-if not debug:
-	os.remove('ps_pack.bat')
-	os.remove('ps_pack.sh')
-	os.remove('DFEnhancementSuitePatch.ps1')
+
+# Clean up intermediaries
+if not keepFiles:
+	remove('ps_pack.bat')
+	remove('DFEnhancementSuitePatch.ps1')
 print('done.')
