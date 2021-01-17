@@ -12,7 +12,8 @@ Write-Host " _____                               `n",
 "    \_|   |_|\__,_|\__, |\___/|_| |_|`n",
 "                    __/ |            `n",
 "                   |___/             `n",
-"DragonFlagon Enhancement Suite Patch for Foundry VTT`n`n",
+"DragonFlagon Enhancement Suite Patch for Foundry VTT`n",
+"                    Version 1.0                     `n`n"
 "----------------------------------------------------"
 
 $PSVersionTable.PSVersion
@@ -83,5 +84,5 @@ Write-Host " ====================================================`n`n",
 "If you have an issue or want to make suggestions for`n",
 "future features, please feel free to post an issue`n",
 "on the GitHub Project page.`n",
-"https://github.com/flamewave000/dragonflagon-fvtt/issues`n"
+"https://github.com/flamewave000/df-fvtt-enhancement-suite/issues`n"
 Pause

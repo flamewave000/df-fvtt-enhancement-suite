@@ -1,5 +1,8 @@
 # Version 3.0
-- Added new layout to the World Configuration page to manage the settings of the animated background. You no longer need to fumble with the parameter tags.
+
+- Moved away from an extension and instead built a patcher for FoundryVTT. This will be a much better method moving forward as it will no longer require everyone to have the extension installed. Instead you only need to run the patch on the FoundryVTT installation and it works.
+- Moved source into its own repository.
+- NEGATIVE: The patch must be applied after every FoundryVTT update. This is due to FoundryVTT obviously erasing the changes made by the patch during the update.
 
 # Version 2.1
 - Fixed default video scaling on Login page.

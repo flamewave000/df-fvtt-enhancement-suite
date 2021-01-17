@@ -2,30 +2,47 @@
 
 ## How to install
 
-- Download the extension for Chrome or Firefox
-- **Chrome:**
-  - Open Browser Settings Menu
-  - Select Extensions
-  - Toggle "Developer mode" on
-  - Either click and drag the `df-fvtt-es_3.0.zip` file onto the extensions page, OR use the "Load unpacked" button to load it from file.
-  - Enjoy!
-- **Firefox:**
-  - Open Browser Settings Menu
-  - Select "Add-ons"
-  - Either click and drag the `df-fvtt-es_3.0.xpi` file onto the add-ons page, OR click the gear button and select "Install add-on from file".
+### Windows
+
+- From the latest release, download the `DFEnhancementSuitePatch.exe` file.
+- Save the file to your FoundryVTT installation folder (not the data folder)
+  - This can usually be found at `C:\Program Files\FoundryVTT`
+- Run the program (it will need administrator privileges so accept that)
+- Enjoy!
+
+### Linux
+
+- From the latest release, download the `DFEnhancementSuitePatch.sh` file
+- Save the file to your FoundryVTT installation folder (not the data folder)
+  - This can usually be found at `/home/<user>/foundryvtt` or wherever you unzipped it to
+- If you have a Desktop, you should be able to double-click the file to run it
+- Otherwise, simply run it in a terminal
+- Enjoy!
+
+### MacOS
+
+- I do not own any Apple hardware and I am therefore unable to test my script on that platform. If anyone wishes to try it and let me know, I would be happy to try and get it working there as well.
+- It generally needs to be run in the FoundryVTT folder where the `resources` directory can be found, as that contains the files that need to be patched.
+
+
+## **You must re-run the patch when ever you update FoundryVTT**
+
+
 
 ## FVTT Setup Package Sorting
-Alphabetical sorts the modules/packages on the server setup screens. The default sort is by "most recently updated", and can be difficult to navigate. This extension re-sorts the packages alphabetically.
+Alphabetically sorts the modules/packages on the server setup screens. The default sort is by "most recently updated", and can be difficult to navigate. This extension re-sorts the packages alphabetically.
 
-## Login Screen Animated Background Extension
-This will allow you to place an animated background on the login screen.
+## Login Screen Animated Background
 
-![Animated Background Example 1](../.assets/animated-titlescreen-background-1.gif)
+The patch allows you to add a video background to your login screen. This will display over top of the set background image.
 
-### **Important: Requires all players to have this extension installed to see it.**
+![Animated Background Example 1](.assets/animated-titlescreen-background-1.gif)
+
+
 
 ### How to use (GM only)
-![Setup](../.assets/df-bganim-update.png)
+
+![Setup](.assets/df-bganim-update.png)
 - In the new fields provided, you can specify the video path and various settings for playback.
 - Click "Update World", launch your world and enjoy the view.
 - File must have one of these supported extensions: `'mp4', 'm4v', 'ogg', 'webm'`
