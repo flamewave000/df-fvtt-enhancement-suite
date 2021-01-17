@@ -1,6 +1,22 @@
-# DragonFlagon Enhancement Suite for Foundry VTT
+<pre>
+ _____
+ |  _ \
+ | | | |_ __ __ _  __ _  ___  _ __
+ | | | | '__/ _` |/ _` |/ _ \| '_ \
+ | |/ /| | | (_| | (_| | (_) | | | |
+ |___/ |_|  \__,_|\__, |\___/|_| |_|
+     ______ _      __/ |
+     |  ___| |    |___/
+     | |_  | | __ _  __ _  ___  _ __
+     |  _| | |/ _` |/ _` |/ _ \| '_ \
+     | |   | | (_| | (_| | (_) | | | |
+     \_|   |_|\__,_|\__, |\___/|_| |_|
+                     __/ |
+                    |___/
+</pre>
+## Enhancement Suite for Foundry VTT
 
-## How to install
+## How to Install
 
 ### Windows
 
@@ -60,3 +76,5 @@ The different forms of scaling are defined here
 - **`contain`:** The video is scaled to maintain its aspect ratio while fitting within the screen's area.
 - **`scale-down`:** The video is sized as if `none` or `contain` were specified (would result in a smaller video size).
 - **`none`:** The video is not resized.
+
+![](.assets\df-patch.png)

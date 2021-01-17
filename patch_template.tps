@@ -1,3 +1,4 @@
+$PSVersion = (($PSVersionTable.PSVersion.Major, $PSVersionTable.PSVersion.Minor, $PSVersionTable.PSVersion.Build, $PSVersionTable.PSVersion.Revision) -join '.')
 Write-Host " _____                               `n",
 "|  _ \                              `n",
 "| | | |_ __ __ _  __ _  ___  _ __    `n",
@@ -13,10 +14,9 @@ Write-Host " _____                               `n",
 "                    __/ |            `n",
 "                   |___/             `n",
 "DragonFlagon Enhancement Suite Patch for Foundry VTT`n",
-"                    Version 1.0                     `n`n"
+"                    Version 1.0                     `n",
+"                  PS:$PSVersion                  `n"
 "----------------------------------------------------"
-
-$PSVersionTable.PSVersion
 
 if ($MyInvocation.MyCommand.CommandType -eq "ExternalScript") {
 	$ScriptPath = $MyInvocation.MyCommand.Definition
@@ -28,7 +28,7 @@ else {
 $__FILE__ = Split-Path -Path $ScriptPath -Leaf
 $__SELF = Get-Content $ScriptPath
 
-$__ROOT =  "D:\Program Files\FoundryVTT - Copy\"
+$__ROOT = "" # "D:\Program Files\FoundryVTT - Copy\"
 $__MAIN = "${__ROOT}resources\app\templates\views\layouts\main.hbs"
 
 if (!(Test-Path "$__MAIN" -PathType Leaf)) {
