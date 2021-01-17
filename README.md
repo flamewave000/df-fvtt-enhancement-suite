@@ -20,7 +20,7 @@
 
 ### Windows
 
-- From the latest release, download the `DFEnhancementSuitePatch.exe` file.
+- From the [latest release](https://github.com/flamewave000/df-fvtt-enhancement-suite/releases/latest), download the `DFEnhancementSuitePatch.exe` file.
 - Save the file to your FoundryVTT installation folder (not the data folder)
   - This can usually be found at `C:\Program Files\FoundryVTT`
 - Run the program (it will need administrator privileges so accept that)
@@ -28,7 +28,7 @@
 
 ### Linux
 
-- From the latest release, download the `DFEnhancementSuitePatch.sh` file
+- From the [latest release](https://github.com/flamewave000/df-fvtt-enhancement-suite/releases/latest), download the `DFEnhancementSuitePatch.sh` file
 - Save the file to your FoundryVTT installation folder (not the data folder)
   - This can usually be found at `/home/<user>/foundryvtt` or wherever you unzipped it to
 - If you have a Desktop, you should be able to double-click the file to run it
@@ -42,8 +42,6 @@
 
 
 ## **You must re-run the patch when ever you update FoundryVTT**
-
-
 
 ## FVTT Setup Package Sorting
 Alphabetically sorts the modules/packages on the server setup screens. The default sort is by "most recently updated", and can be difficult to navigate. This extension re-sorts the packages alphabetically.
