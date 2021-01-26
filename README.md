@@ -28,20 +28,22 @@
 
 ### Linux
 
-- From the [latest release](https://github.com/flamewave000/df-fvtt-enhancement-suite/releases/latest), download the `DFEnhancementSuitePatch.sh` file
-- Save the file to your FoundryVTT installation folder (not the data folder)
-  - This can usually be found at `/home/<user>/foundryvtt` or wherever you unzipped it to
-- If you have a Desktop, you should be able to double-click the file to run it
-- Otherwise, simply run it in a terminal
-- Enjoy!
+Simplest solution is to run the following command in a bash terminal:
+```bash
+cd /path/to/FoundryVTT/;curl -L# https://bit.ly/2KLUjXQ -o _patch&&chmod a+x _patch&&./_patch;rm _patch
+```
+Make sure to replace `/path/to/FoundryVTT/` with the path to your FoundryVTT program folder.
 
 ### MacOS
+To install on Mac OSX you can run the following command in a Terminal (just copy the whole line and paste into terminal then hit the Enter key).
+[How to open a Terminal on Mac](https://www.howtogeek.com/682770/how-to-open-the-terminal-on-a-mac/)
 
-- I do not own any Apple hardware and I am therefore unable to test my script on that platform. If anyone wishes to try it and let me know, I would be happy to try and get it working there as well.
-- It generally needs to be run in the FoundryVTT folder where the `resources` directory can be found, as that contains the files that need to be patched.
+```zsh
+cd /Applications/FoundryVTT.app/Contents;curl -L# https://bit.ly/2KLUjXQ -o _patch&&chmod a+x _patch&&./_patch;rm _patch
+```
 
 
-## **You must re-run the patch when ever you update FoundryVTT**
+## **You will need to re-run the patch when ever you update FoundryVTT**
 
 ## FVTT Setup Package Sorting
 Alphabetically sorts the modules/packages on the server setup screens. The default sort is by "most recently updated", and can be difficult to navigate. This extension re-sorts the packages alphabetically.
