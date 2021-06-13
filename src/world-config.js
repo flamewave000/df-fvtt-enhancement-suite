@@ -76,7 +76,7 @@ function dfExt_getSubmitData(updateData = {}) {
 	</div>
 </div>
 `).height();
-		html.find('button.file-picker').each((i, button) => sender._activateFilePicker(button));
+		html.find('button.file-picker').each((i, button) => { button.onclick = sender._activateFilePicker.bind(sender) });
 		html.height(html.height() + (height * 3.5));
 	});
 	WorldConfig.prototype._getSubmitData = dfExt_getSubmitData;

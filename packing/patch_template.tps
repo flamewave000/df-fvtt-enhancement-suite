@@ -64,7 +64,7 @@ function processJS {
 	extract $file "${__ROOT}resources\app\public\scripts"
 	if ($?) { Write-Host done } else { Write-Host failed }
 	Write-Host -NoNewline "Injecting $file into $__MAIN..."
-	inject "</body>" "<script src=""scripts/$file""></script>" $__MAIN
+	inject "</body>" "<script defer src=""scripts/$file""></script>" $__MAIN
 	if ($?) { Write-Host done } else { Write-Host failed }
 }
 function processCSS {

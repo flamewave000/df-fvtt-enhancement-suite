@@ -1,4 +1,9 @@
 
+function dfExt_compare(a, b) {
+	a = a.toLowerCase();
+	b = b.toLowerCase();
+	return a > b ? 1 : a == b ? 0 : -1;
+};
 function dfExt_sortModulesTab() {
 	'use strict';
 	let modules = document.getElementById('module-list');
@@ -9,10 +14,7 @@ function dfExt_sortModulesTab() {
 		if (items[i].nodeType != 1) continue;
 		itemsArr.push(items[i]);
 	}
-	let compare = function (a, b) {
-		return a > b ? 1 : a == b ? 0 : -1;
-	};
-	itemsArr.sort((a, b) => compare(a.firstElementChild.firstElementChild.innerHTML.trim(),
+	itemsArr.sort((a, b) => dfExt_compare(a.firstElementChild.firstElementChild.innerHTML.trim(),
 		b.firstElementChild.firstElementChild.innerHTML.trim()));
 	for (i = 0; i < itemsArr.length; ++i) {
 		modules.appendChild(itemsArr[i]);
@@ -29,10 +31,7 @@ function dfExt_sortPackages() {
 		if (items[i].nodeType != 1) continue;
 		itemsArr.push(items[i]);
 	}
-	let compare = function (a, b) {
-		return a > b ? 1 : a == b ? 0 : -1;
-	};
-	itemsArr.sort((a, b) => compare(a.firstElementChild.firstElementChild.firstElementChild.innerHTML.trim(),
+	itemsArr.sort((a, b) => dfExt_compare(a.firstElementChild.firstElementChild.firstElementChild.innerHTML.trim(),
 		b.firstElementChild.firstElementChild.firstElementChild.innerHTML.trim()));
 	for (i = 0; i < itemsArr.length; ++i) {
 		packages.appendChild(itemsArr[i]);

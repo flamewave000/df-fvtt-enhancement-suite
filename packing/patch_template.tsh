@@ -39,7 +39,7 @@ processJS() {
 	echo -n "Extracting $1 from $__SELF to resources/app/public/scripts/..."
 	extract "$1" "resources/app/public/scripts" && echo 'done.' || echo 'failed.'
 	echo -n "Injecting $1 into resources/app/templates/views/layouts/main.hbs..."
-	inject '<\/body>' "<script src=\"scripts/$1\"></script>" "resources/app/templates/views/layouts/main.hbs" && echo 'done.' || echo 'failed.'
+	inject '<\/body>' "<script defer src=\"scripts/$1\"></script>" "resources/app/templates/views/layouts/main.hbs" && echo 'done.' || echo 'failed.'
 }
 processCSS() {
 	# $1: file
