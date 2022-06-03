@@ -65,7 +65,7 @@ The patch allows you to add a video background to your login screen. This will d
 
 #### (RECOMMENDED) Provided Background Image Backup
 
-It is recommended you set a backup image so that if a user does not have the extension running, they will still see a pretty image and not just a blank background.
+It is recommended you set a backup image so that if a video fails to load, or takes some time, they will still see a pretty image and not just a blank background.
 
 ### Adjust Video Scaling/Fit
 
